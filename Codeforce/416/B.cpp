@@ -1,32 +1,27 @@
 #include<bits/stdc++.h>
-#define ll long long int
 using namespace std;
+int a[101010];
+int main() {
 
-
-
-int main()
-{
-    vector<ll>a;
-vector<ll>b;
-    ll m, n, v, l, x, r;
-
-    cin>>n>>m;
-
-    for(ll i = 0;i<n;i++)
-    {
-        cin>>v;
-        a.push_back(v);
-        //b.push_back(v);
+    int n, m;
+    cin >> n >> m;
+    for(int i = 0;i<n;i++) {
+        cin >> a[i];
     }
-
-    for(ll i = 0;i<m;i++)
-    {
-        b = a;
-        cin>>l>>r>>x;
-        l--;
-        sort(b.begin()+l, b.begin()+r);
-
-        if(b[x-1]==a[x-1])
+    for(int i = 0;i<m;i++) {
+        int l, r, x;
+        cin >> l >> r >> x;
+        --l; --r; --x;
+        int cnt = 0;
+        for (int i = l; i <= r; ++i) {
+            if(a[x]>a[i])
+            {
+                cnt++;
+                //cout<<a[x] << " > "<<a[i]<<endl;
+            }
+           // cout<<cnt<<endl;
+        }
+        if(x==cnt+l)
         {
             puts("Yes");
         }
@@ -34,10 +29,6 @@ vector<ll>b;
         {
             puts("No");
         }
-
     }
-    a.clear();
-    b.clear();
-
     return 0;
 }
